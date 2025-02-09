@@ -8,6 +8,7 @@ export default createGlobalStyle`
     outline: none;
     text-decoration: none;
     font-family: "Josefin Sans", serif;
+    color: white;
 }
 
 body {
