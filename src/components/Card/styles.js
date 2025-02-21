@@ -6,7 +6,7 @@ flex-flow: column nowrap;
 justify-content: space-around;
 align-items: center;
 img {
-    width: 300px;
+    max-width: 300px;
     border-radius: 30px;
     height: 100%;
 }

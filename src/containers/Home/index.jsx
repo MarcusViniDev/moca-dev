@@ -8,6 +8,9 @@ import { getImages } from "../../utils/get-images"
 const Home = () => {
     const [movie, setMovie] = useState()
     const [topMovies, setTopMovies] = useState()
+    const [topSeries, setTopSeries] = useState()
+    const [popularSeries, setPopularSeries] = useState()
+    const [bestArtist, setBestArtist] = useState()
 
     useEffect(() => {
         const getMovies = async () => {
@@ -29,6 +32,38 @@ const Home = () => {
         }
         getTopMovies()
 
+        const getTopSeries = async () => {
+            const {
+                data: { results }
+            } = await api.get('/tv/top_rated')
+            
+            setTopSeries(results)
+          
+        }
+        getTopSeries()
+
+        const getPopularSeries = async () => {
+            const {
+                data: { results }
+            } = await api.get('/tv/popular')
+            
+            setPopularSeries(results)
+          
+        }
+        getPopularSeries()
+
+        getTopSeries()
+
+        const getBestArtist = async () => {
+            const {
+                data: { results }
+            } = await api.get('/person/popular')
+            
+            setBestArtist(results)
+          
+        }
+        getBestArtist()
+
     }, [])
 
 
@@ -39,7 +74,7 @@ const Home = () => {
     return (
         <>
             {movie && (
-                <Background img={getImages(movie.
+                <Background $img={getImages(movie.
                     backdrop_path)}>
                     <Container>
                         <Info>
@@ -57,6 +92,9 @@ const Home = () => {
                 </Background>
             )}
             {topMovies && <Slider info={topMovies} title={'Top Filmes'}/>} 
+            {topSeries && <Slider info={topSeries} title={'Top Series'}/>} 
+            {popularSeries && <Slider info={popularSeries} title={'Séries Populares'}/>}
+            {bestArtist && <Slider info={bestArtist} title={'Melhores Artistas'}/>}
         </>
 
 

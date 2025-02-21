@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const Background = styled.div`
 position: relative;
-    background: url(${props => props.img}) no-repeat center / cover;
+    background: url(${props => props.$img}) no-repeat center / cover;
     height: 100vh;
     display: flex;
     flex-flow: column nowrap;
