@@ -2,6 +2,7 @@ import { getImages } from "../../utils/get-images"
 import { Container } from "./styles"
 
 function Card ({ item }) {
+    
     return(
         <Container>
             <img src={ getImages(item.poster_path || item.profile_path || "") } alt="" />

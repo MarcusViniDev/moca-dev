@@ -8,10 +8,14 @@ z-index: 3;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: 0 50px 0 20px;
+padding: 20px 50px 20px 50px;
+background-color: rgba(0,0,0,0.5);
+background-color: ${ props => props.$changeBackground ? 'rgba(0,0,0,0.65)' : 'transparent' };
+transition: background-color 1s ease-in-out;
 
 img {
-width: 12%;
+width: 80px;
+
 }
 `
 export const Menu = styled.ul`
