@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const Background = styled.div`
-height: 100vh;
-width: 100vw;
-z-index: 3;
-background-color: rgba(0, 0, 0, 0.4);
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-
+ position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); 
+  z-index: 3; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export const ExitModal = styled.button`
 background-color: transparent;
@@ -18,6 +19,11 @@ border: none;
 export const Container = styled.div`
 background-color: #000;
 width: 50%;
+@media screen and (max-width: 1200px){
+  width: 90%;
+  
+}
+height: auto;
 display: flex;
 flex-flow: column nowrap;
 justify-content: center;

@@ -1,44 +1,49 @@
 import styled from "styled-components";
+
 export const Background = styled.div`
-position: relative;
-    background: url(${props => props.$img}) no-repeat center / cover;
-    height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
+  position: relative;
+  background: url(${(props) => props.$img}) no-repeat center / cover;
+  height: 100vh;
+  width: 100vw; /* Garante que cobre toda a largura */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  overflow: hidden; /* Garante que o pseudo-elemento não ultrapasse */
 
-    &::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-    }
-    @media screen and (max-width:1200px) {
-        height: 150vh;
-    }
-`
+  /* Máscara preta cobrindo toda a tela */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Garante que a máscara fique acima do fundo */
+  }
+
+  @media screen and (max-width: 1200px) {
+    height: 150vh;
+  }
+`;
 export const Container = styled.main`
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100vh;
+  position: relative; /* Mantém os conteúdos acima da máscara */
+  z-index: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
 
-    @media screen and (max-width: 1200px){
-    display: flex;
+  @media screen and (max-width: 1200px) {
     flex-flow: column-reverse nowrap;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    
-
-}
-
-
-`
+  }
+`;
 export const Info = styled.div`
 display: flex;
 flex-flow: column nowrap;

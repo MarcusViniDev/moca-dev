@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { useEffect } from "react"
-import api from "../../Services/api"
 import { Background, Container, ContainerButtons, Info, Poster } from "../../styles/styles"
 import Button from "../../components/Button"
 import Slider from "../../components/Sliders"
 import { getImages } from "../../utils/get-images"
 import Modal from "../../components/Modal"
+import { getBestArtist, getMovies, getPopularMovies, getPopularSeries, getTopMovies, getTopSeries } from "../../utils/get-data"
 const Home = () => {
     const [showModal, setShowModal] = useState(false)
     const [movie, setMovie] = useState()
@@ -16,66 +16,20 @@ const Home = () => {
     const [bestArtist, setBestArtist] = useState()
 
     useEffect(() => {
-        const getMovies = async () => {
-            const {
-                data: { results }
-            } = await api.get('/movie/popular')
-            setMovie(results[0])
+        const getAllData = async () => {
+
+            setMovie(await getMovies())
+            setPopularMovie(await getPopularMovies())
+            setTopMovies(await getTopMovies())
+            setTopSeries(await getTopSeries())
+            setPopularSeries(await getPopularSeries())
+            setBestArtist(await getBestArtist())
+
 
         }
-        getMovies()
 
-        const getPopularMovies = async () => {
-            const {
-                data: { results }
-            } = await api.get('/movie/popular')
-            setPopularMovie(results)
 
-        }
-        getPopularMovies()
-
-        const getTopMovies = async () => {
-            const {
-                data: { results }
-            } = await api.get('/movie/top_rated')
-
-            setTopMovies(results)
-
-        }
-        getTopMovies()
-
-        const getTopSeries = async () => {
-            const {
-                data: { results }
-            } = await api.get('/tv/top_rated')
-
-            setTopSeries(results)
-
-        }
-        getTopSeries()
-
-        const getPopularSeries = async () => {
-            const {
-                data: { results }
-            } = await api.get('/tv/popular')
-
-            setPopularSeries(results)
-
-        }
-        getPopularSeries()
-
-        getTopSeries()
-
-        const getBestArtist = async () => {
-            const {
-                data: { results }
-            } = await api.get('/person/popular')
-
-            setBestArtist(results)
-
-        }
-        getBestArtist()
-
+        getAllData()
     }, [])
 
 
