@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { Container, Background, ExitModal } from "./styles"
-import { getModalMovie } from "../../utils/get-data"
+import { getMovieVideo } from "../../utils/get-data"
 
 function Modal({ movieId, setShowModal }) {
     const [movie, setMovie] = useState()
 
     useEffect(() => {
         const getModal = async () => {
-            setMovie(await getModalMovie(movieId))
+            setMovie(await getMovieVideo(movieId))
         }
         getModal()
     }, [])

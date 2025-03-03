@@ -6,14 +6,18 @@ import Slider from "../../components/Sliders"
 import { getImages } from "../../utils/get-images"
 import Modal from "../../components/Modal"
 import { getBestArtist, getMovies, getPopularMovies, getPopularSeries, getTopMovies, getTopSeries } from "../../utils/get-data"
+import { useNavigate } from 'react-router-dom'
+
+
 const Home = () => {
-    const [showModal, setShowModal] = useState(false)
-    const [movie, setMovie] = useState()
-    const [popularMovie, setPopularMovie] = useState()
-    const [topMovies, setTopMovies] = useState()
-    const [topSeries, setTopSeries] = useState()
-    const [popularSeries, setPopularSeries] = useState()
-    const [bestArtist, setBestArtist] = useState()
+    const [showModal, setShowModal] = useState(false);
+    const [movie, setMovie] = useState();
+    const [popularMovie, setPopularMovie] = useState();
+    const [topMovies, setTopMovies] = useState();
+    const [topSeries, setTopSeries] = useState();
+    const [popularSeries, setPopularSeries] = useState();
+    const [bestArtist, setBestArtist] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getAllData = async () => {
@@ -63,7 +67,7 @@ const Home = () => {
                             <h1>{movie.title}</h1>
                             <p>{movie.overview}</p>
                             <ContainerButtons>
-                                <Button red={true}>Assistir Agora</Button>
+                                <Button red onClick ={()=>navigate(`/detail/${movie.id}`)}>Assistir Agora</Button>
                                 <Button onClick={() => setShowModal(true)} red={false}>Assistir o Trailer</Button>
                             </ContainerButtons>
                         </Info>

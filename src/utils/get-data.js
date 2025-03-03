@@ -54,13 +54,35 @@ export const getBestArtist = async () => {
     return results
 }
 
+// tela detail
+
 // modal video home
 
-export const getModalMovie = async (movieId) => {
+export const getMovieVideo = async (movieId) => {
     const {
         data: { results }
     } = await api.get(`/movie/${movieId}/videos`)
     return results[0]
 }
+
+
+export const getMovieDetail = async (movieId) => {
+    const {data} = await api.get(`/movie/${movieId}`)
+    return data
+}
+
+export const getMovieCredits = async (movieId) => {
+    const {
+        data:{ cast }
+    } = await api.get(`/movie/${movieId}/credits`)
+    return cast
+}
+export const getMovieSimilar = async (movieId) => {
+    const {
+        data: { results }
+    } = await api.get(`/movie/${movieId}/similar`)
+    return results
+}
+
 
 

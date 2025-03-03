@@ -1,5 +1,12 @@
-import styled from "styled-components";
-
+import styled, {keyframes} from "styled-components";
+const scale = keyframes`
+from {
+  transform: scale(0);
+}
+to {
+  transform: scale(1);
+}
+`
 export const Background = styled.div`
   position: relative;
   background: url(${(props) => props.$img}) no-repeat center / cover;
@@ -22,6 +29,16 @@ export const Background = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1; /* Garante que a máscara fique acima do fundo */
+  }
+  &::after {
+    content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5%;
+        background-image: linear-gradient(to top, #000, rgba(0,0,0,0));
+
   }
 
   @media screen and (max-width: 1200px) {
@@ -79,6 +96,7 @@ border-radius: 10px;
  img {
     width: 100%;
     border-radius: 30px;
+    animation: ${scale} 0.19s linear;
  }
 `
 export const ContainerButtons = styled.div`
